@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCL Season 5 Registration</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#0b3d91,#061b40);
+    padding:20px;
+}
+.container{
+    max-width:500px;
+    background:#fff;
+    margin:auto;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 0 20px rgba(0,0,0,.25);
+}
+.logo{
+    width:120px;
+    display:block;
+    margin:0 auto 10px;
+}
+h1{
+    text-align:center;
+    color:#0b3d91;
+    margin-bottom:20px;
+}
+input,select{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+}
+.qr{
+    width:220px;
+    display:block;
+    margin:15px auto;
+    border-radius:12px;
+}
+.payment-box{
+    background:#f8f8f8;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    margin-top:15px;
+}
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:green;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+button:disabled{
+    background:gray;
+}
+.success{
+    text-align:center;
+    color:green;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Upload your logo file in repo as logo.png -->
+  <img src="logo.png" class="logo">
+
+  <h1>GCL SEASON 5</h1>
+
+  <form id="regForm">
+
+    <input type="text" placeholder="Player Name" required>
+
+    <input type="tel" placeholder="Phone Number" required>
+
+    <input type="date" required>
+
+    <input type="text" placeholder="Address" required>
+
+    <select required>
+      <option value="">Select Player Type</option>
+      <option>Batsman</option>
+      <option>Bowler</option>
+      <option>All Rounder</option>
+    </select>
+
+    <select required>
+      <option value="">Select Batting Type</option>
+      <option>Right Hand Bat</option>
+      <option>Left Hand Bat</option>
+    </select>
+
+    <select required>
+      <option value="">Select Bowling Type</option>
+      <option>Right Arm</option>
+      <option>Left Arm</option>
+    </select>
+
+    <p><b>Upload Player Photo</b></p>
+    <input type="file" required>
+
+    <div class="payment-box">
+      <h3>Entry Fee ₹150</h3>
+
+      <!-- Upload your qr file in repo as qr.png -->
+      <img src="qr.png" class="qr">
+
+      <p>Scan QR & Complete Payment</p>
+
+      <input type="text" id="utr" placeholder="Enter UTR / Transaction ID" required>
+
+      <p id="paymsg" class="success"></p>
+    </div>
+
+    <button id="submitBtn" disabled>Submit Registration</button>
+
+  </form>
+
+</div>
+
+<script>
+const utr=document.getElementById("utr");
+const submitBtn=document.getElementById("submitBtn");
+const paymsg=document.getElementById("paymsg");
+
+utr.addEventListener("input",function(){
+   if(utr.value.length>=10){
+      submitBtn.disabled=false;
+      paymsg.innerText="Payment Verified Ready To Submit ✅";
+   }else{
+      submitBtn.disabled=true;
+      paymsg.innerText="";
+   }
+});
+</script>
+
+</body>
+</html>
